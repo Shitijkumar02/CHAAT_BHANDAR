@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saini Chat Point – Gamma 1, Greater Noida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">🍽 Saini Chat Point</span>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="tel:09711531025" class="btn-call">📞 Call Us</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Est. in Gamma 1 · Greater Noida</div>
+    <h1 class="hero-title">Pure Desi Ghee.<br><em>Pure Desi Love.</em></h1>
+    <p class="hero-sub">Authentic street chaat starting at just ₹40 — made with real desi ghee, no garlic, no onion.</p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-primary">See Our Menu</a>
+      <a href="https://www.swiggy.com/restaurants/saini-chaat-point-alpha-2-greater-noida-noida-1-150821/dineout" target="_blank" class="btn-secondary">Order on Swiggy</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">4.1★</span><span class="stat-label">Google Rating</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">106+</span><span class="stat-label">Reviews</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">₹80</span><span class="stat-label">Aloo Tikki</span></div>
+    </div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip" id="about">
+    <div class="strip-item">
+      <span class="strip-icon">🫙</span>
+      <div><strong>Pure Desi Ghee</strong><p>Every dish cooked in authentic pure ghee</p></div>
+    </div>
+    <div class="strip-item">
+      <span class="strip-icon">🌿</span>
+      <div><strong>No Garlic · No Onion</strong><p>Sattvic-friendly preparation always</p></div>
+    </div>
+    <div class="strip-item">
+      <span class="strip-icon">💸</span>
+      <div><strong>₹1 – ₹200</strong><p>Real street food at real street prices</p></div>
+    </div>
+    <div class="strip-item">
+      <span class="strip-icon">📍</span>
+      <div><strong>Praveen Plaza</strong><p>Jagat Farm, Gamma 1, Greater Noida</p></div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="section" id="menu">
+    <div class="section-label">What we serve</div>
+    <h2 class="section-title">Our Menu</h2>
+    <p class="section-sub">Every item made fresh, every time. Prices from ₹40 to ₹100.</p>
+    <div class="menu-grid">
+      {% for item in menu %}
+      <div class="menu-card {% if item.tag %}featured{% endif %}">
+        {% if item.tag %}<span class="menu-tag">{{ item.tag }}</span>{% endif %}
+        <div class="menu-name">{{ item.name }}</div>
+        <div class="menu-desc">{{ item.desc }}</div>
+        <div class="menu-price">₹{{ item.price }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section section-dark" id="reviews">
+    <div class="section-label">What people say</div>
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="stars-summary">
+      <div class="big-rating">4.1</div>
+      <div>
+        <div class="stars">★★★★☆</div>
+        <div class="rating-count">Based on 106 Google reviews</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      {% for r in reviews %}
+      <div class="review-card">
+        <div class="review-stars">{% for i in range(r.rating) %}★{% endfor %}{% for i in range(5 - r.rating) %}☆{% endfor %}</div>
+        <p class="review-text">"{{ r.text }}"</p>
+        <div class="review-name">— {{ r.name }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-label">Find us</div>
+    <h2 class="section-title">Visit Us</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>Address</h3>
+        <p>Praveen Plaza, Jagat Farm,<br>Block E, Chandila, Gamma 1,<br>Greater Noida, UP 201310</p>
+        <a href="https://maps.google.com/?q=Saini+Chat+Point+Greater+Noida" target="_blank" class="btn-outline">Get Directions</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🕓</div>
+        <h3>Timings</h3>
+        <p>Opens at <strong>4:00 PM</strong><br>Every day</p>
+        <p class="timing-note">Best visited in the evening for freshest chaat!</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Call / Order</h3>
+        <p><a href="tel:09711531025">097115 31025</a></p>
+        <a href="https://www.swiggy.com/restaurants/saini-chaat-point-alpha-2-greater-noida-noida-1-150821/dineout" target="_blank" class="btn-outline">Order on Swiggy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">🍽 Saini Chat Point</div>
+    <p>Gamma 1, Greater Noida · Est. in Uttar Pradesh</p>
+    <p class="footer-copy">Pure ghee. Pure taste. Pure satisfaction.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
